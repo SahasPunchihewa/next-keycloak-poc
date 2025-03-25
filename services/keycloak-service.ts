@@ -1,4 +1,4 @@
-import Keycloak, { KeycloakLogoutOptions } from 'keycloak-js';
+import Keycloak, { KeycloakLoginOptions, KeycloakLogoutOptions } from 'keycloak-js';
 
 class KeycloakService {
     // To make the dynamic configuration work, we need to initialize the Keycloak instance with some default values.
@@ -48,7 +48,7 @@ class KeycloakService {
 
     public static register = () => this.keycloak.register();
 
-    public static doLogin = () => this.keycloak.login();
+    public static doLogin = (options: KeycloakLoginOptions) => this.keycloak.login(options);
 
     public static doLogout = async (options?: KeycloakLogoutOptions) => {
         localStorage.removeItem('userId');
